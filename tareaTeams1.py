@@ -1,40 +1,51 @@
 import random
+
 def generar_matriz(matriz, fila=0):
     if fila >= 4:
         return matriz
     matriz.append([random.randint(1, 100) for _ in range(4)])
     return generar_matriz(matriz, fila + 1)
+
 def desplegar_matriz(matriz, fila=0):
     if fila >= len(matriz):
         return
     print(matriz[fila])
     desplegar_matriz(matriz, fila + 1)
+
 def desplegar_fila(matriz, fila, i=0):
     if fila >= len(matriz) or i >= len(matriz[0]):
+        print()
         return
     print(matriz[fila][i], end=' ')
     desplegar_fila(matriz, fila, i + 1)
+
 def desplegar_columna(matriz, columna, fila=0):
     if fila >= len(matriz):
         return
     print(matriz[fila][columna])
     desplegar_columna(matriz, columna, fila + 1)
+
 def diagonal_principal(matriz, indice=0):
     if indice >= len(matriz):
+        print()
         return
     print(matriz[indice][indice], end=' ')
     diagonal_principal(matriz, indice + 1)
+
 def diagonal_inversa(matriz, indice=0):
     if indice >= len(matriz):
+        print()
         return
     print(matriz[indice][len(matriz) - indice - 1], end=' ')
     diagonal_inversa(matriz, indice + 1)
+
 def suma_elementos(matriz, fila=0, col=0, suma=0):
     if fila >= len(matriz):
         return suma
     if col >= len(matriz[0]):
         return suma_elementos(matriz, fila + 1, 0, suma)
     return suma_elementos(matriz, fila, col + 1, suma + matriz[fila][col])
+
 def contar_mayores_50(matriz, fila=0, col=0, count=0):
     if fila >= len(matriz):
         return count
@@ -43,6 +54,7 @@ def contar_mayores_50(matriz, fila=0, col=0, count=0):
     if matriz[fila][col] > 50:
         count += 1
     return contar_mayores_50(matriz, fila, col + 1, count)
+
 def fila_menor_elemento(matriz, fila=0, col=0, menor=float('inf'), fila_menor=-1):
     if fila >= len(matriz):
         return fila_menor
